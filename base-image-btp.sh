@@ -9,7 +9,7 @@ elif [ -f ~/.bashrc ]; then
 fi
 
 APP_NAME=movie-catalog-backend
-APP_VERSION=0.1.2
+APP_VERSION=0.1.3
 
 docker build --platform linux/amd64 -t localhost/${APP_NAME}:${APP_VERSION} --tls-verify=false -f ./Dockerfile
 docker tag localhost/${APP_NAME}:${APP_VERSION} zcr.cloudzcp.net/cloudzcp/${APP_NAME}:${APP_VERSION}
