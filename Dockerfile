@@ -18,6 +18,6 @@ RUN /application/.venv/bin/uv sync --no-cache --no-dev
 RUN ls -al .
 # RUN tree ./application
 
-EXPOSE 8800
+EXPOSE 8000
 
 CMD ["/application/.venv/bin/python", "src/movie_catalog_backend/__init__.py"]
