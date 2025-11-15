@@ -20,4 +20,4 @@ RUN ls -al .
 
 EXPOSE 8000
 
-CMD ["/application/.venv/bin/python", "src/movie_catalog_backend/__init__.py"]
+CMD ["/application/.venv/bin/uv", "run", "movie-catalog-backend"]
