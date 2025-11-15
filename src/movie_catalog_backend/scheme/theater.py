@@ -1,8 +1,10 @@
-from pydantic import BaseModel
+"""Theater Pydantic 스키마"""
+from typing import Optional
+from pydantic import BaseModel, Field
 
 
 class TheaterCreate(BaseModel):
-    """Schema for creating a theater"""
+    """영화관 생성 요청"""
     name: str
     brand: str
     location: str
@@ -10,20 +12,20 @@ class TheaterCreate(BaseModel):
 
 
 class TheaterUpdate(BaseModel):
-    """Schema for updating a theater (partial updates allowed)"""
-    name: str | None = None
-    brand: str | None = None
-    location: str | None = None
-    operating_hours: str | None = None
+    """영화관 수정 요청 (부분 업데이트)"""
+    name: Optional[str] = None
+    brand: Optional[str] = None
+    location: Optional[str] = None
+    operating_hours: Optional[str] = None
 
 
 class TheaterRead(BaseModel):
-    """Schema for reading/returning theater data"""
+    """영화관 응답"""
     id: str
     name: str
     brand: str
     location: str
     operating_hours: str
+    
+    model_config = {"from_attributes": True}
 
-    class Config:
-        from_attributes = True

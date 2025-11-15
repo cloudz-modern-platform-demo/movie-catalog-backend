@@ -1,21 +1,39 @@
+"""데이터베이스 세션 및 엔진 관리"""
 from contextlib import contextmanager
-from sqlmodel import create_engine, Session, SQLModel
-from .config import get_database_url
+from typing import Generator
+
+from sqlalchemy import event
+from sqlmodel import Session, SQLModel, create_engine
+
+from movie_catalog_backend.db.config import get_database_url
 
 
-# Create engine with SQLite-specific settings
+# 엔진 생성
+DATABASE_URL = get_database_url()
 engine = create_engine(
-    get_database_url(),
-    echo=False,
-    connect_args={"check_same_thread": False}
+    DATABASE_URL,
+    connect_args={"check_same_thread": False},  # SQLite용 설정
+    echo=False
 )
 
 
+# SQLite에서 외래 키 제약 활성화
+@event.listens_for(engine, "connect")
+def set_sqlite_pragma(dbapi_conn, connection_record):
+    """SQLite PRAGMA 설정"""
+    cursor = dbapi_conn.cursor()
+    cursor.execute("PRAGMA foreign_keys=ON")
+    cursor.close()
+
+
+def init_db():
+    """데이터베이스 테이블 생성"""
+    SQLModel.metadata.create_all(engine)
+
+
 @contextmanager
-def session_scope():
-    """
-    Provide a transactional scope for database operations.
-    """
+def session_scope() -> Generator[Session, None, None]:
+    """데이터베이스 세션 컨텍스트 매니저"""
     session = Session(engine)
     try:
         yield session
@@ -26,14 +44,3 @@ def session_scope():
     finally:
         session.close()
 
-
-def init_db():
-    """
-    Initialize database by creating all tables and enabling foreign keys.
-    """
-    # Enable foreign key constraints for SQLite
-    with engine.connect() as conn:
-        conn.exec_driver_sql("PRAGMA foreign_keys=ON")
-
-    # Create all tables
-    SQLModel.metadata.create_all(engine)

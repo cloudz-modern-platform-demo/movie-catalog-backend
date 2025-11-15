@@ -1,8 +1,10 @@
+"""Movie Pydantic 스키마"""
+from typing import Optional
 from pydantic import BaseModel, Field
 
 
 class MovieCreate(BaseModel):
-    """Schema for creating a movie"""
+    """영화 생성 요청"""
     title: str
     distributor: str
     ticket_price: int = Field(ge=0)
@@ -12,17 +14,17 @@ class MovieCreate(BaseModel):
 
 
 class MovieUpdate(BaseModel):
-    """Schema for updating a movie (partial updates allowed)"""
-    title: str | None = None
-    distributor: str | None = None
-    ticket_price: int | None = Field(default=None, ge=0)
-    runtime_minutes: int | None = Field(default=None, ge=0)
-    genre: str | None = None
-    theater_id: str | None = None
+    """영화 수정 요청 (부분 업데이트)"""
+    title: Optional[str] = None
+    distributor: Optional[str] = None
+    ticket_price: Optional[int] = Field(default=None, ge=0)
+    runtime_minutes: Optional[int] = Field(default=None, ge=0)
+    genre: Optional[str] = None
+    theater_id: Optional[str] = None
 
 
 class MovieRead(BaseModel):
-    """Schema for reading/returning movie data"""
+    """영화 응답"""
     id: str
     title: str
     distributor: str
@@ -30,6 +32,6 @@ class MovieRead(BaseModel):
     runtime_minutes: int
     genre: str
     theater_id: str
+    
+    model_config = {"from_attributes": True}
 
-    class Config:
-        from_attributes = True

@@ -1,42 +1,47 @@
-from fastapi import APIRouter, status
-from ..scheme.theater import TheaterCreate, TheaterUpdate, TheaterRead
-from ..scheme.movie import MovieRead
-from ..service import theater_service
+"""Theater API 라우터"""
+from typing import List
 
-router = APIRouter(tags=["theaters"])
+from fastapi import APIRouter, Response, status
+
+from movie_catalog_backend.scheme.theater import TheaterCreate, TheaterRead, TheaterUpdate
+from movie_catalog_backend.service import theater_service
+
+router = APIRouter(prefix="/theaters", tags=["theaters"])
 
 
-@router.post("/theaters", response_model=TheaterRead, status_code=status.HTTP_201_CREATED)
+@router.get("", response_model=List[TheaterRead])
+def list_theaters():
+    """전체 극장 목록 조회"""
+    return theater_service.get_all_theaters()
+
+
+@router.post("", response_model=TheaterRead, status_code=status.HTTP_201_CREATED)
 def create_theater(theater: TheaterCreate):
-    """Create a new theater"""
+    """극장 생성"""
     return theater_service.create_theater(theater)
 
 
-@router.get("/theaters", response_model=list[TheaterRead])
-def list_theaters():
-    """List all theaters"""
-    return theater_service.get_theaters()
-
-
-@router.get("/theaters/{theater_id}", response_model=TheaterRead)
+@router.get("/{theater_id}", response_model=TheaterRead)
 def get_theater(theater_id: str):
-    """Get a specific theater by ID"""
+    """특정 극장 조회"""
     return theater_service.get_theater(theater_id)
 
 
-@router.put("/theaters/{theater_id}", response_model=TheaterRead)
+@router.put("/{theater_id}", response_model=TheaterRead)
 def update_theater(theater_id: str, theater: TheaterUpdate):
-    """Update a theater (partial update allowed)"""
+    """극장 정보 수정"""
     return theater_service.update_theater(theater_id, theater)
 
 
-@router.delete("/theaters/{theater_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{theater_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_theater(theater_id: str):
-    """Delete a theater (fails if it has associated movies)"""
+    """극장 삭제 (연결된 영화가 있으면 409 에러)"""
     theater_service.delete_theater(theater_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-@router.get("/theaters/{theater_id}/movies", response_model=list[MovieRead])
+@router.get("/{theater_id}/movies", response_model=List[dict])
 def get_theater_movies(theater_id: str):
-    """Get all movies for a specific theater"""
+    """특정 극장의 영화 목록 조회"""
     return theater_service.get_theater_movies(theater_id)
+

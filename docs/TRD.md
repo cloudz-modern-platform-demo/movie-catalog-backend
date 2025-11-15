@@ -55,8 +55,8 @@
 ### 5.1 영화관
 | 메서드 | 경로 | 설명 |
 | --- | --- | --- |
-| GET | `/theaters/` | 전체 영화관 목록 조회. |
-| POST | `/theaters/` | 영화관 생성. |
+| GET | `/theaters` | 전체 영화관 목록 조회. |
+| POST | `/theaters` | 영화관 생성. |
 | GET | `/theaters/{theater_id}` | 단일 영화관 조회. |
 | PUT | `/theaters/{theater_id}` | 영화관 정보 수정(부분 갱신). |
 | DELETE | `/theaters/{theater_id}` | 영화관 삭제. 연결된 영화 있으면 `409`. |
@@ -65,8 +65,8 @@
 ### 5.2 영화
 | 메서드 | 경로 | 설명 |
 | --- | --- | --- |
-| GET | `/movies/` | 전체 영화 목록, `theater_id` Query 지원. |
-| POST | `/movies/` | 영화 생성(유효한 영화관 ID 필요). |
+| GET | `/movies` | 전체 영화 목록, `theater_id` Query 지원. |
+| POST | `/movies` | 영화 생성(유효한 영화관 ID 필요). |
 | GET | `/movies/{movie_id}` | 단일 영화 조회. |
 | PUT | `/movies/{movie_id}` | 영화 정보 수정. `theater_id` 변경 시 존재 확인. |
 | DELETE | `/movies/{movie_id}` | 영화 삭제. |
