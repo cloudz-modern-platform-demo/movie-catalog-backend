@@ -1,0 +1,58 @@
+[
+  {
+    "title": "오펜하이머",
+    "distributor": "유니버설 픽처스",
+    "ticket_price": 14000,
+    "runtime_minutes": 180,
+    "genre": "드라마",
+    "theater_id": "33bd96af-0431-47fc-aaad-08107e268393"
+  },
+  {
+    "title": "파묘",
+    "distributor": "쇼박스",
+    "ticket_price": 13000,
+    "runtime_minutes": 134,
+    "genre": "오컬트",
+    "theater_id": "343f8b25-22e0-4d49-a75a-5ba34a69f1bf"
+  },
+  {
+    "title": "듄: 파트2",
+    "distributor": "워너브라더스",
+    "ticket_price": 15000,
+    "runtime_minutes": 166,
+    "genre": "SF",
+    "theater_id": "8d94bf5f-0cd5-4d19-b6ae-ce35fa59dfb4"
+  },
+  {
+    "title": "인셉션",
+    "distributor": "워너브라더스",
+    "ticket_price": 12000,
+    "runtime_minutes": 148,
+    "genre": "SF",
+    "theater_id": "e78327f8-469e-45e3-8873-c2bdf84ad038"
+  },
+  {
+    "title": "기생충",
+    "distributor": "CJ ENM",
+    "ticket_price": 11000,
+    "runtime_minutes": 132,
+    "genre": "드라마",
+    "theater_id": "deecc0da-b267-41d3-95e2-61101c1b1107"
+  },
+  {
+    "title": "범죄도시4",
+    "distributor": "에이비오엔터테인먼트",
+    "ticket_price": 13000,
+    "runtime_minutes": 109,
+    "genre": "액션",
+    "theater_id": "33bd96af-0431-47fc-aaad-08107e268393"
+  },
+  {
+    "title": "인터스텔라",
+    "distributor": "워너브라더스",
+    "ticket_price": 14000,
+    "runtime_minutes": 169,
+    "genre": "SF",
+    "theater_id": "343f8b25-22e0-4d49-a75a-5ba34a69f1bf"
+  }
+]

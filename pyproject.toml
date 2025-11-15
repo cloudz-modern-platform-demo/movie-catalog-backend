@@ -1,0 +1,25 @@
+[project]
+name = "movie-catalog-backend"
+version = "0.1.0"
+description = "Backend API for managing theater and movie information"
+readme = "README.md"
+authors = [
+    { name = "Kilsoo Kang", email = "kilsoo75@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.27.0",
+    "sqlmodel>=0.0.21",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+movie-catalog-backend = "movie_catalog_backend:main"
+
+[build-system]
+requires = ["uv_build>=0.8.17,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/movie_catalog_backend"]

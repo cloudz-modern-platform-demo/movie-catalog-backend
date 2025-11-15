@@ -1,0 +1,37 @@
+[
+  {
+    "id": "33bd96af-0431-47fc-aaad-08107e268393",
+    "name": "CGV 강남",
+    "brand": "CGV",
+    "location": "서울 강남구 역삼동",
+    "operating_hours": "09:00-24:00"
+  },
+  {
+    "id": "343f8b25-22e0-4d49-a75a-5ba34a69f1bf",
+    "name": "롯데시네마 월드타워",
+    "brand": "롯데시네마",
+    "location": "서울 송파구 잠실동",
+    "operating_hours": "08:00-02:00"
+  },
+  {
+    "id": "8d94bf5f-0cd5-4d19-b6ae-ce35fa59dfb4",
+    "name": "메가박스 코엑스",
+    "brand": "메가박스",
+    "location": "서울 강남구 삼성동",
+    "operating_hours": "09:00-01:00"
+  },
+  {
+    "id": "e78327f8-469e-45e3-8873-c2bdf84ad038",
+    "name": "CGV 용산아이파크몰",
+    "brand": "CGV",
+    "location": "서울 용산구 한강로3가",
+    "operating_hours": "09:30-23:30"
+  },
+  {
+    "id": "deecc0da-b267-41d3-95e2-61101c1b1107",
+    "name": "롯데시네마 건대입구",
+    "brand": "롯데시네마",
+    "location": "서울 광진구 화양동",
+    "operating_hours": "09:00-24:00"
+  }
+]
